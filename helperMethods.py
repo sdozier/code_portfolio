@@ -1,6 +1,6 @@
 #Helper methods for project Euler problems
 #Simone Dozier
-primes = set()
+import time
 
 def isPalindrome(s):
     """Takes a string with no caps or special characters. Returns boolean"""
@@ -14,6 +14,7 @@ def isPalindrome(s):
         i2-=1
     return True
 
+primes = set()
 def isPrime(n):
     
     #Don't recalculate primes that have already been encountered:
@@ -53,3 +54,8 @@ def isPrime(n):
     primes.add(n)
     return True
 
+def timeFun(fun):
+    """Time a function"""
+    t=time.time()
+    fun()
+    print "Time: %f " % (time.time()-t)
