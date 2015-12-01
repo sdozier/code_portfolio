@@ -24,12 +24,14 @@ def fitsReq(x):
             return False
     return True
 
-#use tryTil(10**6)
 def tryTil(limit):
     for i in range(1,limit):
         if fitsReq(i):
             print i
             break
+
+def prob52():
+    tryTil(10**6)
 
 #==============#
 #Problem 55: Lychrel numbers
@@ -70,6 +72,43 @@ def countLychrel():
         if isLychrel(i):
             c+=1
     return c
+
+def prob55():
+    print countLychrel()
+
+#==============#
+#Problem 67: Maximum path sum ii
+#==============#
+def readTriangle():
+    """Converts triangle data in file to a matrix"""
+    
+    f = open('p067_triangle.txt','r')
+    rows=[]
+    for line in f:
+        l=line[:-1].split(' ')
+        rows.append(map(int,l))
+    return rows
+
+def prob67():
+    """Finds the maximum path through the triangle
+
+    Dynamic programming solution. Calculates maximum path to each square, starting
+     with the first two squares and working down the triangle. Only stores the max
+     path to each square so you don't calculate every path."""
+    
+    rows=readTriangle()
+    ws = rows[0] #the working sums
+    nws = [0,0] #"next working sum"
+    for i in range(1,len(rows)):
+        nws[0] = ws[0] + rows[i][0]
+        nws[-1] = ws[-1] + rows[i][-1]
+        for j in range(1,len(ws)):
+            x1 = rows[i][j]+ws[j-1]
+            x2 = rows[i][j]+ws[j]
+            nws[j] = max(x1,x2)
+        ws = nws
+        nws = [0]*(i+2)
+    print max(ws)
 
 #==============#
 #Problem 74: Digit factorial chains
@@ -134,13 +173,14 @@ def loop60old(n):
     return True
 
 def prob74():
-    """Returns the number of chains, beginning with n < 1,000,000, that contain exactly 60 terms"""
+    """Prints the number of chains, beginning with n < 1,000,000, that contain exactly 60 terms"""
 
     setUpFactorials()
     c=0
     for i in range(2,1000000):
         if(i%50000==0):
-            print i #to track progress
+            print "checking %i..." % i #to track progress
         if(loop60(i)):
             c+=1
-    return c
+    print c
+
