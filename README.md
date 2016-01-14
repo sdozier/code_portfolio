@@ -5,4 +5,4 @@ Python: a handful of Project Euler solutions. There are commands named by proble
 
 PHP: See .php files in the QuiNote project (https://github.com/Quinote/QuiNote-Final). Most are in the folder "trylogin".
 
-jQuery and AngularJS: examples of code used within an enterprise web application are available. My employer requested I limit public access, but I may share it on request. (By the way, I wrote much of the python and SQL those APIs call too! :) )
+jQuery and AngularJS: examples of code used within an enterprise web application are available. My (ex) employer requested I limit public access, but I may share it on request. (By the way, I wrote much of the python and SQL those APIs call too! :) )
