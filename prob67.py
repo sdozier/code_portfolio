@@ -31,3 +31,6 @@ def process():
         ws = nws
         nws = [0]*(i+2)
     return(max(ws))
+
+def prob67():
+    print process()
